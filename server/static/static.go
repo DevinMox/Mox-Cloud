@@ -113,3 +113,14 @@ func Static(r *gin.RouterGroup, noRoute func(handlers ...gin.HandlerFunc)) {
 		c.Writer.WriteHeaderNow()
 	})
 }
+
+func RegisterRoutes(r *gin.Engine) {
+	// 保留现有的路由...
+
+	// 添加分片上传相关的路由
+	api := r.Group("/api")
+	{
+		api.POST("/upload/chunk", HandleChunkUpload)
+		api.POST("/upload/complete", HandleUploadComplete)
+	}
+}
