@@ -25,3 +25,13 @@ func getSiteConfig() SiteConfig {
 	}
 	return siteConfig
 }
+
+type Config struct {
+	// 保留现有配置...
+
+	// 添加上传相关配置
+	Upload struct {
+		TempDir     string `json:"tempDir"`     // 临时文件存储目录
+		MaxFileSize int64  `json:"maxFileSize"` // 最大文件大小（字节）
+	} `json:"upload"`
+}
